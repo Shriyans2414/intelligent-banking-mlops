@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3>Fraud Monitoring</h3>
+
+<p><strong>Total Predictions:</strong> {{ metrics[0] }}</p>
+<p><strong>Fraud Flagged:</strong> {{ metrics[1] }}</p>
+
+{% if metrics[0] > 0 %}
+    <p><strong>Fraud Rate:</strong> {{ (metrics[1] / metrics[0] * 100) | round(2) }} %</p>
+{% endif %}
+
+{% endblock %}

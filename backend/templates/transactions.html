@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Transaction History</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" width="100%">
+    <tr>
+        <th>Txn ID</th>
+        <th>Type</th>
+        <th>Amount</th>
+        <th>Account</th>
+        <th>Related Account</th>
+        <th>Date</th>
+        <th>Fraud Score</th>
+        <th>Status</th>
+    </tr>
+
+    {% for txn in transactions %}
+    <tr
+        {% if txn[7] == True %}
+            style="background-color:#ffe6e6;"
+        {% endif %}
+    >
+        <td>{{ txn[0] }}</td>
+        <td>{{ txn[1] }}</td>
+        <td>₹ {{ txn[2] }}</td>
+        <td>{{ txn[4] }}</td>
+        <td>{{ txn[5] if txn[5] else "-" }}</td>
+        <td>{{ txn[3] }}</td>
+
+        <!-- Fraud Probability -->
+        <td>
+            {% if txn[6] is not none %}
+                {{ "%.4f"|format(txn[6]) }}
+            {% else %}
+                -
+            {% endif %}
+        </td>
+
+        <!-- Fraud Decision -->
+        <td>
+            {% if txn[7] == True %}
+                🚨 FRAUD
+            {% elif txn[7] == False %}
+                ✅ Clean
+            {% else %}
+                -
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+<br>
+
+{% if is_admin %}
+    <a href="/admin">Back to Admin Dashboard</a>
+{% else %}
+    <a href="/dashboard">Back to Dashboard</a>
+{% endif %}
+
+{% endblock %}

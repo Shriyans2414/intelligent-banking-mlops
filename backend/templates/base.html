@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Intelligent Banking Platform</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="navbar">
+    <h2>🏦 Intelligent Banking Platform</h2>
+
+    {% if request.session.get("user") %}
+        <div class="nav-links">
+            <span>Logged in as: {{ request.session.get("user") }}</span>
+
+            {% if request.session.get("role") == "ADMIN" %}
+                | <a href="/admin">Admin Dashboard</a>
+            {% else %}
+                | <a href="/dashboard">Dashboard</a>
+            {% endif %}
+
+            | <a href="/logout">Logout</a>
+        </div>
+    {% endif %}
+</div>
+
+<hr>
+
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+
+</body>
+</html>

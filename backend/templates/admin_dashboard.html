@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>🛠 Admin Dashboard</h2>
+
+<hr>
+
+<h3>Transaction Summary</h3>
+
+<div class="card">
+    <p><strong>Total Transactions:</strong> {{ summary[0] }}</p>
+    <p><strong>Approved:</strong> {{ summary[1] }}</p>
+    <p><strong>Fraud Rejected:</strong> {{ summary[2] }}</p>
+    <p><strong>Pending:</strong> {{ summary[3] }}</p>
+</div>
+
+<hr>
+
+<h3>Create Customer Login</h3>
+
+<form method="post" action="/admin/create-user">
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <input type="number" name="customer_id" placeholder="Customer ID" required>
+    <button type="submit">Create User</button>
+</form>
+
+<hr>
+
+<h3>Reset User Password</h3>
+
+<form method="post" action="/admin/reset-password">
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="new_password" placeholder="New Password" required>
+    <button type="submit">Reset Password</button>
+</form>
+
+<hr>
+
+<h3>Create Bank Account</h3>
+
+<form method="post" action="/admin/create-account">
+    <input type="number" name="customer_id" placeholder="Customer ID" required>
+
+    <select name="account_type">
+        <option value="SAVINGS">Savings</option>
+        <option value="CURRENT">Current</option>
+        <option value="LOAN">Loan</option>
+    </select>
+
+    <button type="submit">Create Account</button>
+</form>
+
+<br>
+<a href="/admin/transactions">View All Transactions</a>
+
+<hr>
+
+<h3>Model Statistics</h3>
+
+<div class="card">
+    {% if avg_score %}
+        <p><strong>Average Fraud Score:</strong> {{ avg_score | round(5) }}</p>
+    {% else %}
+        <p>No fraud scores available yet.</p>
+    {% endif %}
+</div>
+
+<hr>
+
+<h3>Recent Fraudulent Transactions</h3>
+
+{% if recent_frauds %}
+<table>
+    <tr>
+        <th>Txn ID</th>
+        <th>Account ID</th>
+        <th>Amount</th>
+        <th>Fraud Score</th>
+        <th>Timestamp</th>
+    </tr>
+
+    {% for txn in recent_frauds %}
+    <tr>
+        <td>{{ txn[0] }}</td>
+        <td>{{ txn[1] }}</td>
+        <td>₹ {{ txn[2] }}</td>
+        <td>{{ txn[3] }}</td>
+        <td>{{ txn[4] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No fraudulent transactions detected.</p>
+{% endif %}
+
+{% endblock %}

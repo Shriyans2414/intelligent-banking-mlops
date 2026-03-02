@@ -1,0 +1,84 @@
+# PYTHON
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+
+# JUPYTER
+.ipynb_checkpoints/
+
+
+# ENV FILES (CRITICAL)
+.env
+.env.*
+*.env
+
+
+# MODEL ARTIFACTS
+*.pkl
+*.joblib
+*.h5
+*.model
+mlruns/
+artifacts/
+models/
+
+
+# LOG FILES
+*.log
+logs/
+
+
+# DATABASE FILES (if any local)
+*.sqlite3
+*.db
+
+
+# DOCKER
+docker-compose.override.yml
+
+
+# OS FILES
+.DS_Store
+Thumbs.db
+desktop.ini
+
+
+# IDE / EDITORS
+
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# Sublime
+*.sublime-workspace
+*.sublime-project
+
+
+# TEST / CACHE
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+
+# MISC
+*.swp
+*.bak
+*.tmp
