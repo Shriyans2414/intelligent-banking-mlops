@@ -1,4 +1,12 @@
 # Intelligent Banking Platform with Real-Time Fraud Detection & MLOps
+![Python](https://img.shields.io/badge/Python-3.10+-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green)
+![XGBoost](https://img.shields.io/badge/XGBoost-Fraud%20Model-orange)
+![MLflow](https://img.shields.io/badge/MLflow-Experiment%20Tracking-blueviolet)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue)
+![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED)
+![MLOps](https://img.shields.io/badge/MLOps-End--to--End-red)
+![License](https://img.shields.io/badge/License-MIT-green)
 
 A production-style intelligent banking system integrating real-time fraud detection using machine learning, microservices architecture, and MLOps best practices.
 
